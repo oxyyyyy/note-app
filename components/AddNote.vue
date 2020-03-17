@@ -38,7 +38,7 @@ export default {
             this.noteData.text = ''
           })
           .catch((e) => {
-            console.log(e)
+            // console.log(e)
           })
           .finally(() => {
             this.$emit('toggleStatusLoading')
@@ -53,7 +53,7 @@ export default {
           this.$store.dispatch('updateNotes')
         })
         .catch((e) => {
-          console.log(e)
+          // console.log(e)
         })
         .finally(() => {
           this.$emit('toggleStatusLoading')

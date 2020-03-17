@@ -31,7 +31,7 @@ export default {
           this.$store.dispatch('updateNotes')
         })
         .catch((e) => {
-          console.log(e)
+          // console.log(e)
         })
         .finally(() => {
           this.$emit('toggleStatusLoading')
