@@ -25,18 +25,25 @@ export default {
   },
   methods: {
     submitNote() {
-      this.$emit('toggleStatusLoading')
-      axios
-        .post('https://note-app-690b5.firebaseio.com/notes.json', this.noteData)
-        .then(() => {
-          this.$store.dispatch('updateNotes')
-        })
-        .catch((e) => {
-          console.log(e)
-        })
-        .finally(() => {
-          this.$emit('toggleStatusLoading')
-        })
+      if (this.noteData.title && this.noteData.text) {
+        this.$emit('toggleStatusLoading')
+        axios
+          .post(
+            'https://note-app-690b5.firebaseio.com/notes.json',
+            this.noteData
+          )
+          .then(() => {
+            this.$store.dispatch('updateNotes')
+            this.noteData.title = ''
+            this.noteData.text = ''
+          })
+          .catch((e) => {
+            console.log(e)
+          })
+          .finally(() => {
+            this.$emit('toggleStatusLoading')
+          })
+      }
     },
     removeAllNotes() {
       this.$emit('toggleStatusLoading')
